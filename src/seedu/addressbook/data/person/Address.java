@@ -20,7 +20,7 @@ public class Address {
     public final Street street;
     public final Unit unit;
     public final PostalCode postalCode;
-    public String delimiter = ",";
+    public String delimiter = ",\\s*";
     private boolean isPrivate;
 
     /**
