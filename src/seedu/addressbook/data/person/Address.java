@@ -14,7 +14,8 @@ public class Address {
     public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses should be four parts separated by commas";
     public static final String ADDRESS_VALIDATION_REGEX = ".+,.+,.+,.+";
 
-    public final String[] value;
+    public final String[] splitAddress;
+    public final String value;
     public final Block block;
     public final Street street;
     public final Unit unit;
@@ -32,11 +33,12 @@ public class Address {
         if (!isValidAddress(address)) {
             throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
         }
-        this.value = address.split(delimiter);
-        block = new Block(value[0], isPrivate);
-        street = new Street(value[1], isPrivate);
-        unit = new Unit(value[2], isPrivate);
-        postalCode = new PostalCode(value[3], isPrivate);
+        this.value = address;
+        splitAddress = value.split(delimiter);
+        block = new Block(splitAddress[0], isPrivate);
+        street = new Street(splitAddress[1], isPrivate);
+        unit = new Unit(splitAddress[2], isPrivate);
+        postalCode = new PostalCode(splitAddress[3], isPrivate);
     }
 
     /**
@@ -48,7 +50,7 @@ public class Address {
 
     @Override
     public String toString() {
-        return Arrays.toString(value);
+        return value.toString();
     }
 
     @Override
