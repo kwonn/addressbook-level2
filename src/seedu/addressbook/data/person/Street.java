@@ -18,20 +18,20 @@ public class Street {
     /**
      * Validates given street.
      *
-     * @throws IllegalValueException if given block string is invalid.
+     * @throws IllegalValueException if given street string is invalid.
      */
     public Street(String street, boolean isPrivate) throws IllegalValueException {
         this.isPrivate = isPrivate;
-        if (!isValidBlock(street)) {
+        if (!isValidStreet(street)) {
             throw new IllegalValueException(MESSAGE_STREET_CONSTRAINTS);
         }
         this.value = street;
     }
 
     /**
-     * Returns true if a given string is a valid person block.
+     * Returns true if a given string is a valid person street.
      */
-    public static boolean isValidBlock(String test) {
+    public static boolean isValidStreet(String test) {
         return test.matches(STREET_VALIDATION_REGEX);
     }
 
