@@ -15,8 +15,8 @@ public class Address {
     public static final String ADDRESS_VALIDATION_REGEX = ".+,.+,.+,.+";
 
     public final String[] splitAddress;
-    public final String value;
-    public final Block block;
+    public final String value; //don't need the value string so that you're not storing duplicate information
+    public final Block block; //make these private classes
     public final Street street;
     public final Unit unit;
     public final PostalCode postalCode;
@@ -35,7 +35,7 @@ public class Address {
         }
         this.value = address;
         splitAddress = value.split(delimiter);
-        block = new Block(splitAddress[0], isPrivate);
+        block = new Block(splitAddress[0], isPrivate); //don't need to be private for each part of address
         street = new Street(splitAddress[1], isPrivate);
         unit = new Unit(splitAddress[2], isPrivate);
         postalCode = new PostalCode(splitAddress[3], isPrivate);

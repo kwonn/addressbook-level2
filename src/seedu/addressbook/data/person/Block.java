@@ -35,6 +35,8 @@ public class Block {
         return test.matches(BLOCK_VALIDATION_REGEX);
     }
 
+    //TODO: add a setter class
+    
     @Override
     public String toString() {
         return value;
